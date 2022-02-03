@@ -26,6 +26,23 @@ app.get('/:word', (req, res) => {
     );
   });
 });
+//GET /:word/:partOfSpeech
+app.get('/:word/:pos', (req, res) => {
+  const { word, pos } = req.params;
+  //TODO validation
+  const params = {
+    TableName: 'dictionary',
+    KeyConditionExpression: 'word = :word and pos = :pos',
+    ExpressionAttributeValues: {
+      ':word': `${word.toUpperCase()}`,
+      ':pos': `${pos}.`,
+    },
+  };
+  DynamoDB.query(params, function (err, data) {
+    res.json(err ? err : data.Items[0]);
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`listening on ${PORT}`);
 });
