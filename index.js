@@ -6,6 +6,26 @@ const DynamoDB = require('./dynamoDB/config');
 const posDict = require('./helpers/part-of-speech-dict');
 app.use(cors());
 
+// GET /part-of-speech/:pos?letter=X
+app.get('/part-of-speech/:pos', (req, res) => {
+  const { pos } = req.params;
+  const { letter } = req.query;
+  //TODO validation and error handling
+  const params = {
+    TableName: 'dictionary',
+    FilterExpression: 'pos = :pos and begins_with (word , :letter)',
+    ExpressionAttributeValues: {
+      ':pos': `${posDict[pos]}.`,
+      ':letter': `${letter.toUpperCase()}`,
+    },
+  };
+  DynamoDB.scan(params, function (err, data) {
+    res.json(
+      err ? err : data.Items[Math.floor(Math.random() * data.Items.length)]
+    );
+  });
+});
+
 // GET /part-of-speech/:pos - random word data in part-of-speech
 app.get('/part-of-speech/:pos', (req, res) => {
   const { pos } = req.params;
