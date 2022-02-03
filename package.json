@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/tsoriLache/dictionary-BackEnd#readme",
   "dependencies": {
+    "aws-sdk": "^2.1067.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.2"
