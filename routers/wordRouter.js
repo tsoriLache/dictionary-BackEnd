@@ -16,7 +16,12 @@ router.get('/:word', (req, res) => {
       err
         ? { err }
         : data.Count === 0
-        ? { err: { code: 'NOT FOUND', message: 'hahaha' } }
+        ? {
+            err: {
+              statusCode: '404',
+              message: 'sorry,the word doesn`t exist in this dictionary',
+            },
+          }
         : data.Count === 1
         ? { res: data.Items[0] }
         : { pos: data.Items.map((item) => item.pos) }
