@@ -19,7 +19,7 @@ router.get('/:word', (req, res) => {
         ? {
             err: {
               statusCode: '404',
-              message: 'sorry,the word doesn`t exist in this dictionary',
+              message: `sorry,"${word}" doesn't exist in this dictionary`,
             },
           }
         : data.Count === 1
