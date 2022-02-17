@@ -1,0 +1,31 @@
+{
+  "name": "dictionary-BackEnd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js",
+    "dev": "nodemon ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tsoriLache/dictionary-BackEnd.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tsoriLache/dictionary-BackEnd/issues"
+  },
+  "homepage": "https://github.com/tsoriLache/dictionary-BackEnd#readme",
+  "dependencies": {
+    "aws-sdk": "^2.1067.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "serverless-http": "^2.7.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
